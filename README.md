@@ -12,7 +12,7 @@ This demo project is part of Module 7: Containers with Docker from the Nana DevO
 
 ## 🚀 Technologies Used
 
-- <b>Docker for containerization</b>
+- <b>Docker for containerization.</b>
 - <b>Mongo DB: Serves as a database to persist NodeJS data.</b>
 - <b>Mongo-Express: WebUI access for managing Mongo DB.</b>
 - <b>Linux: Ubuntu for Server configuration and management.</b>
@@ -42,7 +42,7 @@ To clone the NodeJS application from Nana DevOps Bootcamp, follow these steps:
 
 ### Pulling Docker Images
 The Docker images for this demo are available on [DockerHub](https://hub.docker.com/_/mongo)
-1. Pull Image for MongoDB in this example I used the MongoDB:4.4 version as my machine was not compatible with MongoDB 5.
+1. Pull Image for MongoDB in this example I used the MongoDB:4.4 version as the CPU requieres AVX support.
 
     ```bash
     docker pull mongo:4.4
@@ -77,13 +77,15 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
    mongo:4.4 #Container Image
    
    ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/5%20Running%20Docker%20container%20mongodb4.png"/>
+   
 ### Running Mongo-Express Container
 1. Run the Mongo-Express container using the docker run command.
 
    ```bash
    docker run \ #Docker Run command
     -d \ #Running Container in detach mode
-    -p 8081:8081 \ #Binding host:container ports
+    -p 8081:8081 \ #Mapping host:container ports
     -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \ #Environment variable for Mongo-Express
     -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin \ #Environment variable for Mongo-Express
     -e ME_CONFIG_MONGODB_SERVER=mongodb4 \ #Environment variable for Mongo-Express
@@ -91,12 +93,13 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
     --name mongo-express \ #Renaming the container
     mongo-express #Container Image
    ```
+
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/6%20Running%20mongo-express.PNG"/>
+   
 ### Access MongoDB with Browser
 1. Open MongoDB using the browser and the mongo-express port:
 
    http://localhost:8081
-
-   <img src=""/>
 
 3. Create a New Database named user-account.
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/7%20Creating%20User%20account%20db.png"/>
@@ -128,14 +131,20 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
    
 8. Click on Edit profile and update the profile.
 
-   <img src=""/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Adding%20user%20to%20app1.PNG" width="400"/>
    
 10. Verify that the user has been updated in the User collection.
 
-    <img src=""/>
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/New%20item%20added%20to%20the%20DB.PNG" width="800"/>
     
 
-### Running Multiple Containers with DOCKER-COMPOSE
+# 🐳 Running Multiple Containers with DOCKER-COMPOSE
+Docker-compose helps managing multiple containers applications by defining all services in a YAML file. Instead of running multiple docker run commands manually.
+
+## ✅ Benefits
+- <b>Simplifies multi-container management.</b>
+- <b>All services are defined in one file.</b>
+- <b>Easier to modify configurations.</b>
 
 
 
