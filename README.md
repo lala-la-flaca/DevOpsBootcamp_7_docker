@@ -1,3 +1,140 @@
+# Containers with Docker 🐳
+
+## Description
+
+This demo project is part of Module 7: Containers with Docker from the Nana DevOps Bootcamp. It introduces the fundamentals of using Docker containers with MongoDB and Mongo-Express. The demo project covers:
+- Setting up a Docker Network.
+- Running MongoDB and Mongo-Express containers.
+- Comparing the manual setup process with the Docker Compose YAML file approach. 
+
+<br />
+
+
+## 🚀 Technologies Used
+
+- <b>Docker for containerization</b>
+- <b>Mongo DB: Serves as a database to persist NodeJS data.</b>
+- <b>Mongo-Express: WebUI access for managing Mongo DB.</b>
+- <b>Linux: Ubuntu for Server configuration and management.</b>
+- <b>NodeJs/npm: Nana's application from DevOps Bootcamp and package manager.</b>
+
+
+## 🎯 Features
+
+- <b>Create Mongo-Network in docker.</b>
+- <b>Download and run MongoDB container.</b>
+- <b>Download and run Mongo-Express container.</b>
+- <b>Deploy NodeJs application.</b>
+- <b>Runnning multiple docker containers with docker-compose.</b>
+
+## 🏗 Project Architecture
+<img src=""/>
+
+## ⚙️ Project Configuration:
+### Cloning Nana’s NodeJS Application Locally
+
+To clone the Java-Gradle application from Nana DevOps Bootcamp, follow these steps:
+
+1. Find the repository here: [Nana Bootcamp Repository]()
+2. Clone the repository:
+   ```bash
+   git clone https://gitlab.com/twn-devops-bootcamp/latest/05-cloud/java-react-example
+
+### Pulling Docker Images
+The Docker images for this demo are available on [DockerHub](https://hub.docker.com/_/mongo)
+1. Pull Image for MongoDB in this example I used the MongoDB:4.4 version as my machine was not compatible with MongoDB 5.
+
+    ```bash
+    docker pull mongo:4.4
+    ```
+2. Pull image for mongo-express.
+
+    ```bash
+    docker pull mongo-express
+    ```
+   
+### Creating Mongo Network
+
+1. Create a mongo-network using docker network create.
+    ```bash
+    docker create network mongo-network
+    ```
+### Running MongoDB Container
+1. Run the MongoDB container using the docker run command.
+   
+   ```bash
+   docker run \ #Docker Run command
+   -d \ #Running Container in detach mode
+   -p 27017:27017 \ #Mapping host:container ports
+   -e MONGO_INITDB_ROOT_USERNAME= admin \ #Environment variable for MongoDB
+   -e MONGO_INITDB_ROOT_PASSWORD= admin \ #Environment variable for MongoDB
+   --name mongodb4 \ #Renaming the container
+   --net mongo-network \ # Adding the container to mongo-network
+   mongo:4.4 #Container Image
+   
+   ```
+### Running Mongo-Express Container
+1. Run the Mongo-Express container using the docker run command.
+
+   ```bash
+   docker run \ #Docker Run command
+    -d \ #Running Container in detach mode
+    -p 8081:8081 \ #Binding host:container ports
+    -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \ #Environment variable for Mongo-Express
+    -e ME_CONFIG_MONGODB_ADMINPASSWORD=admin \ #Environment variable for Mongo-Express
+    -e ME_CONFIG_MONGODB_SERVER=mongodb4 \ #Environment variable for Mongo-Express
+    --net mongo-network \ #Adding the container to mongo-network
+    --name mongo-express \ #Renaming the container
+    mongo-express #Container Image
+   ```
+### Access MongoDB with Browser
+1. Open MongoDB using the browser and the mongo-express port:
+
+   http://localhost:8081
+
+2. Create a New Database called  user-account
+   <img src=""/>
+   
+3. Add a new collection in user-account called users
+
+### Deploy NodeJS application
+1. Update the package manager to ensure it has the latest version.
+
+    ```bash
+   apt update
+   ```
+
+3. Navigate to the app directory and install dependencies with the npm install command.
+   
+   ```bash
+   npm install
+   ```
+5. Run the application locally.
+
+   ```bash
+   node server.js &
+   ```
+6. Access the application from the browser
+
+   http://localhost:3000/
+   
+8. Click on Edit profile and update the profile.
+
+   <img src=""/>
+   
+10. Verify that the user has been updated in the User collection.
+
+    <img src=""/>
+    
+
+### Running Multiple Containers with DOCKER-COMPOSE
+
+
+
+
+
+
+
 ## demo app - developing with Docker
 
 This demo app shows a simple user profile app set up using 
