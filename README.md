@@ -58,7 +58,7 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
 1. Create a mongo-network using docker network create.
    
     ```bash
-    docker create network mongo-network
+    docker network create mongo-network
     ```
     
     <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/4.%20Create%20mongoNetwork.PNG"/>
@@ -177,43 +177,47 @@ Docker-compose helps manage multiple container applications by defining all serv
 
    ```
 
-2. Run docker-compose command
+2. Run docker compose command
 
    ```bash
-   docker-compose -f docker-compose.yaml up
+   docker compose -f docker-compose.yaml up
    ```
 
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/10%20docker%20compose%20up%20with%20file.png?raw=true"/>
 
-3. Run the NodeJS application locally.
+   ⚠️ **Note:**
+   - <b>docker-compose is the legacy version of the standalone tool, which was installed separately from Docker. </b>
+   - <b>docker compose is the newer, built-in command that is included natively in Docker.</b>
+   
+4. Run the NodeJS application locally.
 
    ```bash
    node server.js &
    ```
    
-4. Access the application from the browser.
+5. Access the application from the browser.
 
    http://localhost:3000/
 
-5. Access MongoDB from the browser.
+6. Access MongoDB from the browser.
 
    http://localhost:8081/
 
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/11%20docker%20compose%20up%20mongo%20express.png"/>
 
-6. Add the user-account database.
+7. Add the user-account database.
    
-7. Add the user collection.
+8. Add the user collection.
 
-8. Click on Edit profile and update the profile.
+9. Click on Edit profile and update the profile.
 
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Adding%20user%20to%20app.PNG" width="400"/>
 
-9. Verify that the user has been updated in the User collection.
+10. Verify that the user has been updated in the User collection.
 
     <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Unicorn%20in%20mongoexpress.png" width="800"/>
 
-10. Shut down containers and remove the network.
+11. Shut down containers and remove the network.
    
    ```bash
    docker-compose -f docker-compose.yaml down
