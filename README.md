@@ -105,9 +105,9 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
    
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/7%20Creating%20User%20account%20db.png"/>
    
-3. Add a new collection named users to the user-account.
+3. Add a new collection named users to the user-account database.
 
-   <img src=""/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Collection.png"/>
 
 ### Deploy NodeJS application
 1. Update the package manager to ensure it has the latest version.
@@ -121,11 +121,13 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
    ```bash
    npm install
    ```
+   
 3. Run the application locally.
 
    ```bash
    node server.js &
    ```
+   
 4. Access the application from the browser
 
    http://localhost:3000/
@@ -145,8 +147,8 @@ Docker-compose helps manage multiple container applications by defining all serv
 ## ✅ Benefits
 - <b>Simplifies multi-container management.</b>
 - <b>All services are defined in one file.</b>
-- <b>Easier to modify configurations.</b>
-- <b>By default it creates a dedicated docker network and adds all services to the network.</b>
+- <b>Configuration is easier to modify.</b>
+- <b>It creates a dedicated docker network and adds all services to the network by default.</b>
 
 1. Create the docker-compose.yaml file
 
@@ -209,7 +211,7 @@ Docker-compose helps manage multiple container applications by defining all serv
 
 9. Verify that the user has been updated in the User collection.
 
-    <img src="" width="800"/>
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Unicorn%20in%20mongoexpress.png" width="800"/>
 
 10. Shut down containers and remove the network.
    
