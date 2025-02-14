@@ -28,17 +28,17 @@ This demo project is part of Module 7: Containers with Docker from the Nana DevO
 - <b>Runnning multiple docker containers with docker-compose.</b>
 
 ## 🏗 Project Architecture
+
 <img src=""/>
 
 ## ⚙️ Project Configuration:
+
 ### Cloning Nana’s NodeJS Application Locally
 
 To clone the NodeJS application from Nana DevOps Bootcamp, follow these steps:
 
-1. Find the repository here: [Nana Bootcamp Repository]()
-2. Clone the repository:
-   ```bash
-   git clone https://gitlab.com/twn-devops-bootcamp/latest/05-cloud/java-react-example
+1. Find the repository
+2. Clone the repository using git clone
 
 ### Pulling Docker Images
 The Docker images for this demo are available on [DockerHub](https://hub.docker.com/_/mongo)
