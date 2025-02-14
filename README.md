@@ -33,7 +33,7 @@ This demo project is part of Module 7: Containers with Docker from the Nana DevO
 ## ⚙️ Project Configuration:
 ### Cloning Nana’s NodeJS Application Locally
 
-To clone the Java-Gradle application from Nana DevOps Bootcamp, follow these steps:
+To clone the NodeJS application from Nana DevOps Bootcamp, follow these steps:
 
 1. Find the repository here: [Nana Bootcamp Repository]()
 2. Clone the repository:
@@ -56,9 +56,13 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
 ### Creating Mongo Network
 
 1. Create a mongo-network using docker network create.
+   
     ```bash
     docker create network mongo-network
     ```
+    
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/4.%20Create%20mongoNetwork.PNG"/>
+    
 ### Running MongoDB Container
 1. Run the MongoDB container using the docker run command.
    
@@ -92,10 +96,14 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
 
    http://localhost:8081
 
-2. Create a New Database called  user-account
    <img src=""/>
+
+3. Create a New Database named user-account.
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/7%20Creating%20User%20account%20db.png"/>
    
-3. Add a new collection in user-account called users
+4. Add a new collection named users to the user-account.
+
+   <img src=""/>
 
 ### Deploy NodeJS application
 1. Update the package manager to ensure it has the latest version.
