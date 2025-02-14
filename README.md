@@ -195,7 +195,7 @@ Docker-compose helps manage multiple container applications by defining all serv
 
    http://localhost:3000/
 
-5. Access Mongo-Express from the browser.
+5. Access MongoDB from the browser.
 
    http://localhost:8081/
 
