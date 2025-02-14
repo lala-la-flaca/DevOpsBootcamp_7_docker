@@ -42,7 +42,7 @@ To clone the NodeJS application from Nana DevOps Bootcamp, follow these steps:
 
 ### Pulling Docker Images
 The Docker images for this demo are available on [DockerHub](https://hub.docker.com/_/mongo)
-1. Pull Image for MongoDB in this example I used the MongoDB:4.4 version as the CPU requieres AVX support.
+1. Pull Image for MongoDB in this example I used the MongoDB:4.4 version as the CPU requires AVX support.
 
     ```bash
     docker pull mongo:4.4
@@ -101,10 +101,11 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
 
    http://localhost:8081
 
-3. Create a New Database named user-account.
+2. Create a New Database named user-account.
+   
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/7%20Creating%20User%20account%20db.png"/>
    
-4. Add a new collection named users to the user-account.
+3. Add a new collection named users to the user-account.
 
    <img src=""/>
 
@@ -115,41 +116,109 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
    apt update
    ```
 
-3. Navigate to the app directory and install dependencies with the npm install command.
+2. Navigate to the app directory and install dependencies with the npm install command.
    
    ```bash
    npm install
    ```
-5. Run the application locally.
+3. Run the application locally.
 
    ```bash
    node server.js &
    ```
-6. Access the application from the browser
+4. Access the application from the browser
 
    http://localhost:3000/
    
-8. Click on Edit profile and update the profile.
+5. Click on Edit profile and update the profile.
 
    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Adding%20user%20to%20app1.PNG" width="400"/>
    
-10. Verify that the user has been updated in the User collection.
+6. Verify that the user has been updated in the User collection.
 
     <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/New%20item%20added%20to%20the%20DB.PNG" width="800"/>
     
 
 # 🐳 Running Multiple Containers with DOCKER-COMPOSE
-Docker-compose helps managing multiple containers applications by defining all services in a YAML file. Instead of running multiple docker run commands manually.
+Docker-compose helps manage multiple container applications by defining all services in a YAML file. Instead of running multiple docker run commands manually.
 
 ## ✅ Benefits
 - <b>Simplifies multi-container management.</b>
 - <b>All services are defined in one file.</b>
 - <b>Easier to modify configurations.</b>
+- <b>By default it creates a dedicated docker network and adds all services to the network.</b>
 
+1. Create the docker-compose.yaml file
 
+   ```bash
+   version: '3'
+   services: 
+     mongodb: 
+       image: mongo:4.4
+       ports:
+         - 27017:27017
+       environment:
+         - MONGO_INITDB_ROOT_USERNAME=admin
+         - MONGO_INITDB_ROOT_PASSWORD=admin
+   
+     mongo-express:
+       image: mongo-express
+       ports:
+         - 8081:8081
+       restart: always
+       environment:
+         - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+         - ME_CONFIG_MONGODB_ADMINPASSWORD=admin
+         - ME_CONFIG_MONGODB_SERVER=mongodb
+       depends_on:
+         - "mongodb"
 
+   ```
 
+2. Run docker-compose command
 
+   ```bash
+   docker-compose -f docker-compose.yaml up
+   ```
+
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/10%20docker%20compose%20up%20with%20file.png?raw=true"/>
+
+3. Run the NodeJS application locally.
+
+   ```bash
+   node server.js &
+   ```
+   
+4. Access the application from the browser.
+
+   http://localhost:3000/
+
+5. Access Mongo-Express from the browser.
+
+   http://localhost:8081/
+
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/11%20docker%20compose%20up%20mongo%20express.png"/>
+
+6. Add the user-account database.
+   
+7. Add the user collection.
+
+8. Click on Edit profile and update the profile.
+
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Adding%20user%20to%20app.PNG" width="400"/>
+
+9. Verify that the user has been updated in the User collection.
+
+    <img src="" width="800"/>
+
+10. Shut down containers and remove the network.
+   
+   ```bash
+   docker-compose -f docker-compose.yaml down
+   ```
+
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/13%20docker%20compose%20down.PNG"/>
+    
 
 
 ## demo app - developing with Docker
