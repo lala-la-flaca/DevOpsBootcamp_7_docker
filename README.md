@@ -25,7 +25,7 @@ This demo project is part of Module 7: Containers with Docker from the Nana DevO
 - <b>Download and run MongoDB container.</b>
 - <b>Download and run Mongo-Express container.</b>
 - <b>Deploy NodeJs application.</b>
-- <b>Runnning multiple docker containers with docker-compose.</b>
+- <b>Run multiple docker containers with docker-compose.</b>
 - <b>Build application image using Dockerfile.</b>
 
 
