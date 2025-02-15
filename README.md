@@ -225,4 +225,61 @@ Docker-compose helps manage multiple container applications by defining all serv
 
     <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/13%20docker%20compose%20down.PNG"/>
     
+# 🐳 Building NodeJS app image using the Dockerfile
 
+1. Create the Dockerfile in the application code. Ensure that the file is spelled with Capital D.
+2. Add the Dockerfile instruccions.
+   
+   ```bash
+
+   #Setting the base image
+   FROM node:20-alpine
+
+   #Adding env variables in the container
+   ENV MONGO_DB_USERNAME=admin \
+        MONGO_DB_PWD=admin
+
+   #Creating /home/app directory in the docker container
+   RUN mkdir -p /home/app
+    
+    #Copying only the content from the app folder to the home/app in the docker container
+    COPY ./app /home/app
+    
+    #Setting default directory so that next commands execute in /home/app dir in the container
+    WORKDIR /home/app
+    
+    #Executing npm install in /home/app because of WORKDIR
+    RUN npm install
+    
+    #Running sever.js when the container starts. No need for /home/app/server.js because of WORKDIR
+    CMD ["node", "server.js"]
+
+   ```
+   4. Run the docker build command to build the application image in the current directory.
+      
+      ```bash
+      docker build -t <app_name>:<tag/version> <directory>
+      ```
+
+      ```bash
+      docker build -t js-app:1.0 .
+      ```
+
+   5. Verify that the image was correctly created.
+
+      ```bash
+      docker images
+      ```
+
+      <img src=""/>
+      
+   7. Run the Docker container.
+
+      ```bash
+      docker run 
+      ```
+
+      <img src=""/>
+      
+
+   
