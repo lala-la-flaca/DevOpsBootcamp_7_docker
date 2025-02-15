@@ -47,6 +47,7 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
     ```bash
     docker pull mongo:4.4
     ```
+    
 2. Pull image for mongo-express.
 
     ```bash
@@ -61,7 +62,7 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
     docker network create mongo-network
     ```
     
-    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/4.%20Create%20mongoNetwork.PNG"/>
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/4.%20Create%20mongoNetwork.PNG" width=600 />
     
 ### Running MongoDB Container
 1. Run the MongoDB container using the docker run command.
@@ -77,7 +78,7 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
    mongo:4.4 #Container Image
    
    ```
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/5%20Running%20Docker%20container%20mongodb4.png"/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/5%20Running%20Docker%20container%20mongodb4.png" width=600 />
    
 ### Running Mongo-Express Container
 1. Run the Mongo-Express container using the docker run command.
@@ -94,7 +95,7 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
     mongo-express #Container Image
    ```
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/6%20Running%20mongo-express.PNG"/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/6%20Running%20mongo-express.PNG" width=600 />
    
 ### Access MongoDB with Browser
 1. Open MongoDB using the browser and the mongo-express port:
@@ -103,11 +104,11 @@ The Docker images for this demo are available on [DockerHub](https://hub.docker.
 
 2. Create a New Database named user-account.
    
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/7%20Creating%20User%20account%20db.png"/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/7%20Creating%20User%20account%20db.png" width=600 />
    
 3. Add a new collection named users to the user-account database.
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Collection.png"/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/Collection.png" width=600 />
 
 ### Deploy NodeJS application
 1. Update the package manager to ensure it has the latest version.
@@ -183,7 +184,7 @@ Docker-compose helps manage multiple container applications by defining all serv
    docker compose -f docker-compose.yaml up
    ```
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/10%20docker%20compose%20up%20with%20file.png?raw=true"/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/10%20docker%20compose%20up%20with%20file.png?raw=true" width=600 />
 
    ⚠️ **Note:**
    - <b>docker-compose is the legacy version of the standalone tool, which was installed separately from Docker. </b>
@@ -203,7 +204,7 @@ Docker-compose helps manage multiple container applications by defining all serv
 
    http://localhost:8081/
 
-   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/11%20docker%20compose%20up%20mongo%20express.png"/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/11%20docker%20compose%20up%20mongo%20express.png" width=500/>
 
 7. Add the user-account database.
    
@@ -223,7 +224,7 @@ Docker-compose helps manage multiple container applications by defining all serv
     docker-compose -f docker-compose.yaml down
     ```
 
-    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/13%20docker%20compose%20down.PNG"/>
+    <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/13%20docker%20compose%20down.PNG" width=600 />
     
 # 🐳 Building NodeJS app image using the Dockerfile
 
@@ -255,31 +256,30 @@ Docker-compose helps manage multiple container applications by defining all serv
     CMD ["node", "server.js"]
 
    ```
-   4. Run the docker build command to build the application image in the current directory.
+3. Run the docker build command to build the application image, indicating the location of the Dockerfile (current directory).
+
+   ```bash
+   docker build -t <app_name>:<tag/version> <directory>
+   ```
+   ```bash
+   docker build -t js-app:1.0 .
+   ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/14%20Docker%20build%20img%20app.PNG" width=600 />
+
+4. Verify that the image was correctly created.
+
+   ```bash
+   docker images
+   ```
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/16%20App%20img%20%20available.png" width=600 />
       
-      ```bash
-      docker build -t <app_name>:<tag/version> <directory>
-      ```
+5. Run the Docker container.
 
-      ```bash
-      docker build -t js-app:1.0 .
-      ```
+   ```bash
+   docker run -d js-app:1.0
+   ```
 
-   5. Verify that the image was correctly created.
-
-      ```bash
-      docker images
-      ```
-
-      <img src=""/>
-      
-   7. Run the Docker container.
-
-      ```bash
-      docker run 
-      ```
-
-      <img src=""/>
+   <img src="https://github.com/lala-la-flaca/DevOpsBootcamp_7_docker/blob/main/Img/18%20running%20image.png" width=600 />
       
 
    
